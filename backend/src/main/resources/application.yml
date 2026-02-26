@@ -1,0 +1,35 @@
+spring:
+  datasource:
+    url: jdbc:h2:mem:ecommercedb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+    driverClassName: org.h2.Driver
+    username: sa
+    password: password
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+
+server:
+  port: 8080
+
+paypal:
+  base-url: https://api-m.sandbox.paypal.com
+  client-id: AUAe0nYKvbjZCVNsDv4W1tFIAz8erZN9zz8uYXQnoDQmlBSlsePaI5aJWqbJjFxa-GH4qng_3jdDO324
+  client-secret: EEB2CWJMvG54CJof39JJauJPp7KI2Clj5JYHRdxhhF3RmgipYl3SBEl1NgyU00QGJgOmQ76-KTIDpd17
+  currency-code: USD
+  return-url: http://localhost:5173/checkout/success
+  cancel-url: http://localhost:5173/checkout/cancel
+
+logging:
+  level:
+    org.springframework.web: INFO
+    com.example.ecommerce: DEBUG
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
