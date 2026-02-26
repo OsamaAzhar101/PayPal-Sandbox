@@ -46,22 +46,16 @@ mvn clean install
 
 ### 3.2 Configure PayPal sandbox credentials
 
-Open `backend/src/main/resources/application.yml` and set:
+**Do not commit real credentials.** Set these **environment variables** before running the backend:
 
-- `paypal.client-id`
-- `paypal.client-secret`
-
-Example:
-
-```yaml
-paypal:
-  base-url: https://api-m.sandbox.paypal.com
-  client-id: YOUR_SANDBOX_CLIENT_ID
-  client-secret: YOUR_SANDBOX_CLIENT_SECRET
-  currency-code: USD
+```bash
+export PAYPAL_CLIENT_ID=your_sandbox_client_id
+export PAYPAL_CLIENT_SECRET=your_sandbox_client_secret
 ```
 
-Optionally, configure custom return/cancel URLs:
+Or create a `.env` file in `backend/` (already gitignored) and source it. The app reads `PAYPAL_CLIENT_ID` and `PAYPAL_CLIENT_SECRET` from the environment.
+
+Optionally, configure custom return/cancel URLs in `application.yml`:
 
 ```yaml
   return-url: http://localhost:5173/checkout/success

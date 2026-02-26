@@ -17,8 +17,10 @@ server:
 
 paypal:
   base-url: https://api-m.sandbox.paypal.com
-  client-id: AUAe0nYKvbjZCVNsDv4W1tFIAz8erZN9zz8uYXQnoDQmlBSlsePaI5aJWqbJjFxa-GH4qng_3jdDO324
-  client-secret: EEB2CWJMvG54CJof39JJauJPp7KI2Clj5JYHRdxhhF3RmgipYl3SBEl1NgyU00QGJgOmQ76-KTIDpd17
+  # Set via environment variables (never commit real values):
+  # PAYPAL_CLIENT_ID, PAYPAL_CLIENT_SECRET
+  client-id: ${PAYPAL_CLIENT_ID:}
+  client-secret: ${PAYPAL_CLIENT_SECRET:}
   currency-code: USD
   return-url: http://localhost:5173/checkout/success
   cancel-url: http://localhost:5173/checkout/cancel

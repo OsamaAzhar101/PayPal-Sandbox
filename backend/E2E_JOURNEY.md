@@ -448,12 +448,20 @@ Order with externalOrderId: "7NA2AJ3NJC4JK"
 
 ## 🛠️ Configuration
 
-### PayPal Credentials (application.yml)
+### PayPal Credentials (environment variables)
+
+Do **not** put real credentials in the repo. Set these before running the backend:
+
+- `PAYPAL_CLIENT_ID` – your sandbox app client ID  
+- `PAYPAL_CLIENT_SECRET` – your sandbox app client secret  
+
+`application.yml` reads them:
+
 ```yaml
 paypal:
   base-url: https://api-m.sandbox.paypal.com
-  client-id: AUAe0nYKvbjZCVNsDv4W1tFIAz8erZN9zz8uYXQnoDQmlBSlsePaI5aJWqbJjFxa-GH4qng_3jdDO324
-  client-secret: EEB2CWJMvG54CJof39JJauJPp7KI2Clj5JYHRdxhhF3RmgipYl3SBEl1NgyU00QGJgOmQ76-KTIDpd17
+  client-id: ${PAYPAL_CLIENT_ID:}
+  client-secret: ${PAYPAL_CLIENT_SECRET:}
   currency-code: USD
   return-url: http://localhost:5173/checkout/success
   cancel-url: http://localhost:5173/checkout/cancel
